@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        function validate()
+        {
+            var a = document.form.name.value;
+            if(a=="")
+            {
+                alert("Name is must!");
+                document.form.name.focus();
+                return false;
+            }
+            if(!isNaN(a))
+            {
+                alert("Only characters are allowed to the name");
+                document.form.name.select();
+                return false;
+            }
+            var d = document.form.mail.value;
+            if(d == "")
+            {
+                alert("Mail is must!");
+                document.form.mail.focus();
+                return false;
+            }
+            var atpos = d.indexOf("@");
+            var dotpos = d.lastIndexOf(".");
+            if(atpos<1 || dotpos<atpos+2 || dotpos+2>=d.length)
+                {
+                    alert("EMAIL IS NOT VALID");
+                return false;                }
+            var p = document.form.pass.value;
+            if(p == "")
+            {
+                alert("CHECK YOUR PASSWORD");
+                document.form.pass.focus();
+                return false;
+            }
+            var cp = document.form.cpass.value;
+            if(cp == "")
+            {
+                alert("CHECK YOUR PASSWORD");
+                document.form.cpass.focus();
+                return false;
+            }
+            if(p != cp)
+            {
+                alert("CONFIRM PASSWORD IS VARYING FROM NEW PASSWORD");
+                document.form.cpass.focus();
+                return false;
+            }
+            var m = document.form.mno.value;
+            if(m =="")
+            {
+                alert("MOBILE NUMBER IS MUST");
+                document.form.mno.focus();
+                return false;
+            }
+            else if(m.length<10 || m.length>10)
+                {
+                    alert("MOBILE NUMBER MUST HAVE 10 DIGITS");
+                    document.form.mno.focus();
+                    return false;
+                }
+            var rb = document.form.gender;
+            var status =0;
+            for(var i=0;i<rb.length;i++)
+            {
+                if(rb[i].checked==true){
+                    status=1;
+                }
+            }
+            if(status==0)
+            {
+                alert("CLICK YOUR GENDER");
+                return false;
+            }
+            var interest = document.form.course;
+            if(interest.selectedIndex==0)
+            {
+                alert("CHOOSE YOUR COURSE");
+                document.form.course.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <style>
+        .container
+        {
+            display: grid;
+            padding: 50px 20px 20px 20px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body style="background-color:rgb(115, 209, 233)">
+    
+    <div class="container">
+    <h1>FORM </h1><br><br>
+    <form name="form"  onsubmit="return validate()">
+        <div class="item">
+            <label for="Username">Name :</label>
+            <input type="text" id="name" name="name">
+        </div> <br>
+        <div class="item">
+            <label for="Mailid">E-mail :</label>
+            <input type="text" id="mail" name="mail">
+        </div> <br>
+        <div class="item">
+            <label for="password">New password:</label>
+            <input type="text" id="pw" name="pass">
+        </div> <br>
+        <div class="item">
+            <label for="cpassword">Confirm password:</label>
+            <input type="text" id="cpw" name="cpass">
+        </div> <br>
+        <div class="item">
+            <label for="mno">Phone number:</label>
+            <input type="text" id="mno" name="mno">
+        </div> <br>
+        <div class="item">
+            <label for="gender">Gender:</label><br>
+            <input type="radio" id="gender" name="gender">
+            <label for="male">Male</label><br>
+            <input type="radio" id="gender" name="gender">
+            <label for="female">Female</label><br>
+            <input type="radio" id="gender" name="gender">
+            <label for="others">Others</label><br>
+        </div><br>
+        <div class="item">
+            <label for="course">Select course:</label> <br>
+            <select type="text" name="course" id="course"> 
+                <option></option>
+                <option value="ML">Machine Learning</option>
+                <option value="DS">Data Science</option>
+            </select>
+        </div> <br>
+        <div class="item">
+            <input type="submit" id="sub" name="sub">
+        </div> <br>
+    </form>
+</div>
+</body>
+</html>
